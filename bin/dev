@@ -15,6 +15,10 @@ then
   exit $?
 fi
 
+if command -v overmind &> /dev/null; then
+  exec overmind start -f Procfile.dev "$@"
+fi
+
 if gem list --no-installed --exact --silent foreman; then
   echo "Installing foreman..."
   gem install foreman
