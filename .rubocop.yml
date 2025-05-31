@@ -19,9 +19,6 @@ Layout/IndentationWidth:
 Layout/EmptyLinesAroundAccessModifier:
   Enabled: true
 
-Style/FrozenStringLiteralComment:
-  Enabled: true
-
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
