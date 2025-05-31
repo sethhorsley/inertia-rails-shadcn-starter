@@ -16,7 +16,7 @@ module ActiveSupport
 end
 
 class ActionDispatch::IntegrationTest
-  def sign_in_as(user, password: 'Secret1*3*5*')
-    post sign_in_url, params: { email: user.email, password: password }
+  def sign_in_as(user, password: "Secret1*3*5*")
+    post sign_in_url, params: {email: user.email, password: password}
   end
-end 
+end

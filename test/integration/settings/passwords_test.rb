@@ -29,8 +29,8 @@ class Settings::PasswordsTest < ActionDispatch::IntegrationTest
     }
     assert_redirected_to settings_password_path
     assert_equal(
-      { password_challenge: "Password challenge is invalid" },
+      {password_challenge: "Password challenge is invalid"},
       session[:inertia_errors]
     )
   end
-end 
+end

@@ -10,7 +10,7 @@ class Identity::EmailVerificationsTest < ActionDispatch::IntegrationTest
   end
 
   test "POST /identity/email_verification sends verification email" do
-    assert_enqueued_with(job: ActionMailer::MailDeliveryJob, args: ["UserMailer", "email_verification", "deliver_now", { params: { user: @user }, args: [] }]) do
+    assert_enqueued_with(job: ActionMailer::MailDeliveryJob, args: ["UserMailer", "email_verification", "deliver_now", {params: {user: @user}, args: []}]) do
       post identity_email_verification_url
     end
 
@@ -33,4 +33,4 @@ class Identity::EmailVerificationsTest < ActionDispatch::IntegrationTest
     assert_redirected_to settings_email_path
     assert_equal "That email verification link is invalid", flash[:alert]
   end
-end 
+end

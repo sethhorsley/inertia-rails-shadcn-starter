@@ -18,4 +18,4 @@ class UsersTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to dashboard_url
   end
-end 
+end

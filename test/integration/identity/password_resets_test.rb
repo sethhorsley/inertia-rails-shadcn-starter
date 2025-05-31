@@ -19,15 +19,15 @@ class Identity::PasswordResetsTest < ActionDispatch::IntegrationTest
   end
 
   test "POST /create with valid email sends reset email" do
-    assert_enqueued_with(job: ActionMailer::MailDeliveryJob, args: ["UserMailer", "password_reset", "deliver_now", { params: { user: @user }, args: [] }]) do
-      post identity_password_reset_url, params: { email: @user.email }
+    assert_enqueued_with(job: ActionMailer::MailDeliveryJob, args: ["UserMailer", "password_reset", "deliver_now", {params: {user: @user}, args: []}]) do
+      post identity_password_reset_url, params: {email: @user.email}
     end
     assert_redirected_to sign_in_url
   end
 
   test "POST /create with nonexistent email shows error" do
     assert_no_enqueued_emails do
-      post identity_password_reset_url, params: { email: "invalid_email@hey.com" }
+      post identity_password_reset_url, params: {email: "invalid_email@hey.com"}
     end
     assert_redirected_to new_identity_password_reset_url
     assert_equal "You can't reset your password until you verify your email", flash[:alert]
@@ -35,9 +35,9 @@ class Identity::PasswordResetsTest < ActionDispatch::IntegrationTest
 
   test "POST /create with unverified email shows error" do
     @user.update!(verified: false)
-    
+
     assert_no_enqueued_emails do
-      post identity_password_reset_url, params: { email: @user.email }
+      post identity_password_reset_url, params: {email: @user.email}
     end
     assert_redirected_to new_identity_password_reset_url
     assert_equal "You can't reset your password until you verify your email", flash[:alert]
@@ -65,4 +65,4 @@ class Identity::PasswordResetsTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_identity_password_reset_url
     assert_equal "That password reset link is invalid", flash[:alert]
   end
-end 
+end

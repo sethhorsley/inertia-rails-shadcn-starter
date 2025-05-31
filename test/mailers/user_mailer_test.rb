@@ -16,4 +16,4 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal "Verify your email", mail.subject
     assert_equal [user.email], mail.to
   end
-end 
+end

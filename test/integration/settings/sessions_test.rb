@@ -10,4 +10,4 @@ class Settings::SessionsTest < ActionDispatch::IntegrationTest
     get settings_sessions_url
     assert_response :success
   end
-end 
+end

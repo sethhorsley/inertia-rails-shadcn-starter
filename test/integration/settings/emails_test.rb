@@ -27,8 +27,8 @@ class Settings::EmailsTest < ActionDispatch::IntegrationTest
     }
     assert_redirected_to settings_email_url
     assert_equal(
-      { password_challenge: "Password challenge is invalid" },
+      {password_challenge: "Password challenge is invalid"},
       session[:inertia_errors]
     )
   end
-end 
+end
