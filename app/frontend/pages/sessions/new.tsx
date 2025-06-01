@@ -17,11 +17,13 @@ interface LoginForm {
 }
 
 export default function Login() {
+  const isDevelopment = import.meta.env.DEV
+  
   const { data, setData, post, processing, errors, reset } = useForm<
     Required<LoginForm>
   >({
-    email: "",
-    password: "",
+    email: isDevelopment ? "admin@example.com" : "",
+    password: isDevelopment ? "password" : "",
     remember: false,
   })
 
